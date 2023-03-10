@@ -45,6 +45,7 @@ type LineEChartsOption = echarts.ComposeOption<
 const DeviceDemo = () => {
   const average = 99,
     total = 100;
+
   const pieOption: PieEChartsOption = {
     title: {
       text: average,
@@ -123,8 +124,8 @@ const DeviceDemo = () => {
       data: ['温度', '湿度'],
     },
     grid: {
-      left: '3%',
-      right: '3%',
+      left: '2%',
+      right: '4%',
       bottom: '3%',
       containLabel: true,
     },
@@ -247,6 +248,11 @@ const DeviceDemo = () => {
       status: 1,
     },
   ];
+
+  const handleLineChart = (_, e) => {
+    e.resize();
+  };
+
   return (
     <div className="demo-wrapper">
       <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
@@ -299,8 +305,8 @@ const DeviceDemo = () => {
               <ReactEChartsCore
                 echarts={echarts}
                 option={lineOption}
-                lazyUpdate={true}
                 style={{ height: '30vh' }}
+                onEvents={{ rendered: handleLineChart }}
               />
             </Card>
           </Col>
