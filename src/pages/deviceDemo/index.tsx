@@ -150,16 +150,16 @@ const DeviceDemo: React.FC<{
   );
 
   const getDeviceMsgPropertyLogIndex = (dataID: string) => {
-    const subtractTime = moment().subtract(10, 'seconds').format('x');
-    const curTime = moment().subtract(5, 'seconds').format('x');
+    const subtractTime = moment().subtract(20, 'seconds').format('x');
+    // const curTime = moment().subtract(5, 'seconds').format('x');
     return postApiV1ThingsDeviceMsgPropertyLogIndex(
       {
         productID: productDetail?.productID as string,
         deviceNames: [deviceName],
         dataID,
         timeStart: subtractTime,
-        timeEnd: curTime,
-        argFunc: 'avg',
+        timeEnd: Date.now().toString(),
+        argFunc: 'last',
         interval: 1000,
         order: 1,
         page,
@@ -436,16 +436,17 @@ const DeviceDemo: React.FC<{
     e.resize();
   };
 
-  const emptyData = [0, 0, 0, 0, 0];
+  const emptyData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   const handleExportCurrentExcel = () => {
     function arrToObj(arr) {
       return arr.reduce((obj, item, index: number) => {
         if (!item) return (obj[xAxisData[index]] = 0), obj;
-        return (obj[xAxisData[index]] = item.value), obj;
+        if (item.dataID === 'tem') return (obj[xAxisData[index]] = `${item.value}℃`), obj;
+        if (item.dataID === 'hum') return (obj[xAxisData[index]] = `${item.value}%RH`), obj;
       }, {});
     }
-    const columnWidths = [5, 5, 5, 5, 5];
+    const columnWidths = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
 
     const temSheetData: HistoryLogType[] | number[] = [
       arrToObj(temPropertyHistory.length ? temPropertyHistory : emptyData),
@@ -500,7 +501,7 @@ const DeviceDemo: React.FC<{
     }
     if (deviceData.length) {
       const data: string[] = [];
-      deviceData.forEach((item, i) => {
+      emptyData.forEach((item, i) => {
         data.push(moment().subtract(i, 'seconds').format('HH:mm:ss'));
       });
 
