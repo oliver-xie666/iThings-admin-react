@@ -100,17 +100,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/产品管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -250,17 +240,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/产品管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -394,17 +374,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/产品管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -589,17 +559,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/产品管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -664,17 +624,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/产品管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -897,17 +847,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/物模型"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1120,17 +1060,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1626,17 +1556,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1826,17 +1746,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1971,17 +1881,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2074,17 +1974,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2219,17 +2109,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备鉴权"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2305,17 +2185,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备鉴权"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2391,17 +2261,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备鉴权"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2463,17 +2323,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备消息"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2504,6 +2354,27 @@
                     "type": "string",
                     "title": "时间的结束"
                   },
+                  "argFunc": {
+                    "type": "string",
+                    "title": "聚合函数",
+                    "description": "avg:平均值 first:第一个参数 last:最后一个参数 count:总数 twa: 时间加权平均函数 参考:https://docs.taosdata.com/taos-sql/function"
+                  },
+                  "interval": {
+                    "type": "integer",
+                    "title": "间隔",
+                    "description": "(单位毫秒) 如果这个值不为零值 则时间的开始和结束必须有效及聚合函数不应该为空"
+                  },
+                  "fill": {
+                    "type": "string",
+                    "title": "填充模式",
+                    "description": "  //  FILL 语句指定某一窗口区间数据缺失的情况下的填充模式。填充模式包括以下几种：   //    不进行填充：NONE（默认填充模式）。   //    VALUE 填充：固定值填充，此时需要指定填充的数值。例如：FILL(VALUE, 1.23)。   //    PREV 填充：使用前一个非 NULL 值填充数据。例如：FILL(PREV)。   //    NULL 填充：使用 NULL 填充数据。例如：FILL(NULL)。   //    LINEAR 填充：根据前后距离最近的非 NULL 值做线性插值填充。例如：FILL(LINEAR)。   //    NEXT 填充：使用下一个非 NULL 值填充数据。例如：FILL(NEXT)。"
+                  },
+                  "order": {
+                    "type": "integer",
+                    "title": "时间排序",
+                    "description": "0:aes(默认,从久到近排序) 1:desc(时间从近到久排序)",
+                    "nullable": true
+                  },
                   "page": {
                     "type": "object",
                     "properties": {
@@ -2521,13 +2392,17 @@
                     "x-apifox-ignore-properties": []
                   }
                 },
-                "required": ["deviceNames", "productID", "dataID", "timeEnd", "timeStart"],
+                "required": ["deviceNames", "productID", "dataID"],
                 "x-apifox-orders": [
                   "deviceNames",
                   "productID",
                   "dataID",
                   "timeStart",
                   "timeEnd",
+                  "argFunc",
+                  "interval",
+                  "fill",
+                  "order",
                   "01G6JKJY3PY5JEZJM8GY1RBWG5"
                 ],
                 "x-apifox-refs": {
@@ -2642,17 +2517,7 @@
         "deprecated": false,
         "description": "获取设备主动上传的sdk日志",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备消息"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2773,17 +2638,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备消息"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -3010,17 +2865,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备消息"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -3204,17 +3049,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备交互"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -3293,17 +3128,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备交互"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -3385,17 +3210,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/菜单管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -3520,15 +3335,6 @@
             "required": true,
             "schema": {
               "type": "integer"
-            }
-          },
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -3699,17 +3505,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/菜单管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -3831,17 +3627,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/菜单管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -3916,17 +3702,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/角色管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -4009,17 +3785,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/角色管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -4167,17 +3933,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/角色管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -4264,17 +4020,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/角色管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -4349,17 +4095,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/角色管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -4441,17 +4177,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/用户管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -4608,17 +4334,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/用户管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -4701,17 +4417,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/用户管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -4893,17 +4599,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/用户管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -4969,17 +4665,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/用户管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -5122,17 +4808,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/用户管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -5252,17 +4928,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/用户管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -5444,17 +5110,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/用户管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -5669,17 +5325,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备交互"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -5747,17 +5393,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备分组"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -5840,17 +5476,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备分组"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6102,17 +5728,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备分组"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6252,17 +5868,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备分组"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6359,17 +5965,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备分组"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6444,17 +6040,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备分组"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6719,17 +6305,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备分组"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6823,17 +6399,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备分组"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6927,17 +6493,7 @@
         "deprecated": false,
         "description": "物联网平台通过定义一种物的描述语言来描述物模型模块和功能，称为TSL（Thing Specification Language）",
         "tags": ["iThings-apisvr/物联网相关接口/产品/物模型"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6986,17 +6542,7 @@
         "deprecated": false,
         "description": "物联网平台通过定义一种物的描述语言来描述物模型模块和功能，称为TSL（Thing Specification Language）",
         "tags": ["iThings-apisvr/物联网相关接口/产品/物模型"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7046,17 +6592,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/物模型"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7091,17 +6627,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/物模型"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7188,17 +6714,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/物模型"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7252,17 +6768,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/设备消息"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7461,17 +6967,7 @@
         "description": "",
         "operationId": "read",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/升级包管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7505,17 +7001,7 @@
         "description": "",
         "operationId": "create",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/升级包管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7549,17 +7035,7 @@
         "description": "",
         "operationId": "signedurl",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/升级包管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7593,17 +7069,7 @@
         "description": "",
         "operationId": "firmwareIndex",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/升级包管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7637,17 +7103,7 @@
         "description": "",
         "operationId": "delete",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/升级包管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7681,17 +7137,7 @@
         "description": "",
         "operationId": "update",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/升级包管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7725,17 +7171,7 @@
         "description": "",
         "operationId": "taskAnalysis",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/task"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7769,17 +7205,7 @@
         "description": "",
         "operationId": "taskCancel",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/task"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7813,17 +7239,7 @@
         "description": "",
         "operationId": "taskCreate",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/task"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7857,17 +7273,7 @@
         "description": "",
         "operationId": "taskDeviceCancle",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/task"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7901,17 +7307,7 @@
         "description": "",
         "operationId": "taskDeviceIndex",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/task"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7945,17 +7341,7 @@
         "description": "",
         "operationId": "taskList",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/task"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7989,17 +7375,7 @@
         "description": "",
         "operationId": "taskRead",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/task"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -8032,17 +7408,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/远程配置"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -8113,17 +7479,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/远程配置"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -8246,17 +7602,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/远程配置"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -8322,17 +7668,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/产品/远程配置"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -8418,17 +7754,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/网关子设备管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -8485,17 +7811,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/网关子设备管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -8552,17 +7868,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/设备/网关子设备管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -8703,15 +8009,6 @@
             "schema": {
               "type": "number"
             }
-          },
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -8848,17 +8145,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/规则引擎/规则编排/流"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -8955,17 +8242,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/规则引擎/规则编排/流"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -9031,17 +8308,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/规则引擎/规则编排/流"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -9106,17 +8373,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/规则引擎/规则编排/流"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -9165,17 +8422,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/系统配置"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -9319,15 +8566,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -9366,17 +8604,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/规则引擎/场景联动"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -9445,17 +8673,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/日志管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -9647,17 +8865,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/日志管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -9853,17 +9061,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/接口管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -9954,17 +9152,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/接口管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -10123,17 +9311,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/接口管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -10215,17 +9393,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/系统管理/接口管理"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -10291,17 +9459,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/规则引擎/场景联动"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -10417,17 +9575,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/规则引擎/场景联动"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -10530,17 +9678,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/规则引擎/场景联动"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -10643,17 +9781,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/规则引擎/场景联动"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -10720,17 +9848,7 @@
         "deprecated": false,
         "description": "",
         "tags": ["iThings-apisvr/物联网相关接口/运维/ota升级/task"],
-        "parameters": [
-          {
-            "name": "iThings-token",
-            "in": "header",
-            "description": "",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVaWQiOiIxNzQwMzU4MDU3MDM4MTg4NTQ0IiwiZXhwIjoxNjc3NTA0MDAwLCJpYXQiOjE2Nzc1MDA0MDAsIlJvbGUiOjF9.tUicwFx5LWf8TYLk7WOE-g9KFRF7BvHLE-aAibGjuLA",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -11863,5 +10981,6 @@
         "x-apifox-folder": "iThings数据模型"
       }
     }
-  }
+  },
+  "servers": []
 }
