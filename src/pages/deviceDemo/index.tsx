@@ -7,7 +7,7 @@ import {
 import { postApiV1ThingsProductSchemaIndex } from '@/services/iThingsapi/wumoxing';
 import { DashboardOutlined, UserOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Badge, Button, Card, Col, List, Row, Space, Spin, Statistic } from 'antd';
+import { Badge, Button, Card, Col, List, Row, Select, Space, Spin } from 'antd';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import { LineChart, PieChart } from 'echarts/charts';
 import {
@@ -81,41 +81,70 @@ type HistoryLogType = {
   value: string;
 };
 
-const DeviceDemo: React.FC<{
-  productName: string;
-  deviceName: string;
-}> = ({ productName = '温湿度传感器', deviceName = 'EC800M' }) => {
+type OPtionType = { label: string; value: string };
+
+const DeviceDemo: React.FC = () => {
   const [deviceData, setDeviceData] = useState<deviceDataType[]>([]);
   const [loading, setLoading] = useState(true);
   const [temPropertyHistoryData, setTemPropertyHistoryData] = useState<number[]>([]);
   const [humPropertyHistoryData, setHumPropertyHistoryData] = useState<number[]>([]);
   const [xAxisData, setXAxisData] = useState<string[]>([]);
 
+  const [productOption, setProductOption] = useState<OPtionType[]>();
+  const [deviceOption, setDeviceOption] = useState<OPtionType[]>();
+
+  const [productID, setProductID] = useState('');
+  const [deviceName, setDeviceName] = useState('');
+
   const page = {
     page: 1,
     size: 99999,
   };
   // 通过产品名获取产品ID
-  const { data: productDetail } = useRequest(async () => {
-    const res = await postApiV1ThingsProductInfoIndex({
-      page,
-      productName,
-    });
-    return res.data.list?.[0];
-  });
+  const { data: productDetail } = useRequest(
+    async () => {
+      const res = await postApiV1ThingsProductInfoIndex({
+        page,
+        // productName,
+      });
+      return res.data.list;
+    },
+    {
+      onSuccess: (data) => {
+        setProductOption(
+          data?.map((item) => ({
+            label: item.productName as string,
+            value: item.productID as string,
+          })),
+        );
+        setProductID(data?.[0].productID as string);
+      },
+    },
+  );
+
+  console.log(productDetail);
 
   // 通过产品ID和设备名获取在线状态
   const { data: deviceDetail } = useRequest(
     async () => {
       const res = await postApiV1ThingsDeviceInfoIndex({
         page,
-        productID: productDetail?.productID as string,
-        deviceName,
+        productID,
       });
-      return res.data.list?.[0];
+      return res?.data?.list;
     },
     {
-      ready: Boolean(productDetail?.productID),
+      ready: !!productID,
+      refreshDeps: [productID],
+      onSuccess: (data) => {
+        setDeviceOption(
+          data?.map((item) => ({
+            label: item.deviceName as string,
+            value: item.deviceName as string,
+          })),
+        );
+        setDeviceName(data?.[0].deviceName as string);
+      },
     },
   );
 
@@ -124,14 +153,15 @@ const DeviceDemo: React.FC<{
   const { data: attrData } = useRequest(
     async () => {
       const res = await postApiV1ThingsDeviceMsgPropertyLatestIndex({
-        productID: productDetail?.productID as string,
+        productID,
         deviceName,
         dataIDs: [],
       });
       return res.data;
     },
     {
-      ready: Boolean(productDetail?.productID),
+      ready: !!productID && !!deviceName,
+      refreshDeps: [deviceName],
     },
   );
 
@@ -139,13 +169,14 @@ const DeviceDemo: React.FC<{
   const { data: modelList } = useRequest(
     async () => {
       const res = await postApiV1ThingsProductSchemaIndex({
-        productID: productDetail?.productID as string,
+        productID,
         type: 1,
       });
       return res.data;
     },
     {
-      ready: Boolean(productDetail?.productID),
+      ready: !!productID && !!deviceName,
+      refreshDeps: [deviceName],
     },
   );
 
@@ -154,7 +185,7 @@ const DeviceDemo: React.FC<{
     // const curTime = moment().subtract(5, 'seconds').format('x');
     return postApiV1ThingsDeviceMsgPropertyLogIndex(
       {
-        productID: productDetail?.productID as string,
+        productID: productID as string,
         deviceNames: [deviceName],
         dataID,
         timeStart: subtractTime,
@@ -180,27 +211,45 @@ const DeviceDemo: React.FC<{
   const { data: temPropertyHistory } = useRequest(
     async () => {
       const res = await getDeviceMsgPropertyLogIndex('tem');
-      return res.data.list;
+
+      return res?.data?.list || [];
     },
     {
-      ready: Boolean(productDetail?.productID),
+      ready: !!productID && !!deviceName,
+      refreshDeps: [deviceName],
+      onSuccess: () => {
+        setLoading(false);
+      },
     },
   );
   // 获取单个id hum属性 历史记录
   const { data: humPropertyHistory } = useRequest(
     async () => {
-      const res = await getDeviceMsgPropertyLogIndex('tem');
-      return res.data.list;
+      const res = await getDeviceMsgPropertyLogIndex('hum');
+      return res?.data?.list || [];
     },
     {
-      ready: Boolean(productDetail?.productID),
+      ready: !!productID && !!deviceName,
+      refreshDeps: [deviceName],
+      onSuccess: () => {
+        setLoading(false);
+      },
     },
   );
 
+  // 在线状态
   const isOnline = (row: deviceDetailType) => {
     if (row?.firstLogin === '0') return '未激活';
     else if (row?.firstLogin !== '0' && row?.isOnline == 1) return '在线';
-    else return '离线';
+    else if (row?.firstLogin !== '0' && row?.isOnline == 2) return '离线';
+    else return '-';
+  };
+
+  //采集方式
+  const modelMode = (row: deviceDataType) => {
+    if (row?.value === 'true') return '单次采集';
+    else if (row?.value === 'false') return '周期采集';
+    else return '-';
   };
 
   const getLineOption = (): LineEChartsOption => {
@@ -322,47 +371,86 @@ const DeviceDemo: React.FC<{
     return item.value ? deviceValue[item?.dataID as string] : '-';
   };
 
+  const handleProductChange = (val: string) => {
+    setProductID(val);
+    setLoading(true);
+  };
+  const handleDeviceChange = (val: string) => {
+    setDeviceName(val);
+    setLoading(true);
+  };
+
+  // 获取第一行的ui及数据
+  const getFirstLineDeviceData = (item: deviceDataType & { key: number }) => {
+    if (item?.key === 1) {
+      return (
+        <Select
+          size="large"
+          style={{ width: '150px' }}
+          value={productID}
+          onChange={handleProductChange}
+          options={productOption}
+        />
+      );
+    } else if (item?.key === 2) {
+      return (
+        <Select
+          size="large"
+          style={{ width: '150px' }}
+          value={deviceName}
+          loading={!deviceName}
+          onChange={handleDeviceChange}
+          options={deviceOption}
+        />
+      );
+    } else return item.value;
+  };
+
   const firstLineData = useMemo(
     () => [
       {
         key: 1,
-        icon: <UserOutlined />,
-        title: '设备名称',
-        desc: deviceName,
+        icon: <DashboardOutlined />,
+        name: '所属产品名称',
+        value: 'select',
       },
       {
         key: 2,
-        icon: <DashboardOutlined />,
-        title: '所属产品名称',
-        desc: productName,
+        icon: <UserOutlined />,
+        name: '设备名称',
+        value: 'select',
       },
       {
         key: 3,
         icon: <UserOutlined />,
-        title: '通道数',
-        desc: '-',
+        name: '通道数',
+        value: '-',
       },
       {
         key: 4,
         icon: <UserOutlined />,
-        title: '采集类型',
-        desc: '温度/湿度',
+        name: '采集类型',
+        value: '温度/湿度',
       },
       {
         key: 5,
         icon: <UserOutlined />,
-        title: '采集方式',
-        desc: deviceData?.[4]?.value === 'true' ? '单次采集' : '周期采集',
+        name: '采集方式',
+        value: modelMode(deviceData?.find((item) => item.dataID === 'model')),
       },
       {
         key: 6,
         icon: <UserOutlined />,
-        title: '状态',
-        desc: isOnline(deviceDetail),
+        name: '状态',
+        value: isOnline(
+          deviceDetail?.find(
+            (item) => item.productID === productID && item.deviceName === deviceName,
+          ),
+        ),
         // desc: 'online',
       },
     ],
-    [deviceDetail, deviceName, productName, deviceData],
+    [deviceDetail, deviceName, productID, deviceData],
   );
   // const deviceData = [
   //   {
@@ -436,7 +524,7 @@ const DeviceDemo: React.FC<{
     e.resize();
   };
 
-  const emptyData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  const emptyData = new Array(20).fill(0);
 
   const handleExportCurrentExcel = () => {
     function arrToObj(arr) {
@@ -446,7 +534,7 @@ const DeviceDemo: React.FC<{
         if (item.dataID === 'hum') return (obj[xAxisData[index]] = `${item.value}%RH`), obj;
       }, {});
     }
-    const columnWidths = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
+    const columnWidths = new Array(20).fill(5);
 
     const temSheetData: HistoryLogType[] | number[] = [
       arrToObj(temPropertyHistory.length ? temPropertyHistory : emptyData),
@@ -482,21 +570,21 @@ const DeviceDemo: React.FC<{
     if (modelList && attrData) {
       const arr: deviceDataType[] = [];
       modelList?.list?.forEach((item: deviceDataType) => {
-        attrData.list?.some((list: deviceDataType, index: number) => {
-          if (list.dataID === item.identifier) {
+        attrData?.list?.some((list: deviceDataType, index: number) => {
+          if (list?.dataID === item?.identifier) {
             arr.push({
               ...list,
-              name: item.name,
-              affordance: JSON.parse(item.affordance as string).define.type,
-              unit: JSON.parse(item.affordance as string).define.unit,
+              name: item?.name,
+              affordance: JSON.parse(item?.affordance as string)?.define?.type,
+              unit: JSON.parse(item?.affordance as string)?.define?.unit,
               icon: <UserOutlined />,
               color: index % 2 === 0 ? 'blue' : 'green',
             });
           }
-          return list.dataID === item.identifier;
+          return list?.dataID === item?.identifier;
         });
       });
-      [arr[3], arr[1], arr[2]] = [arr[1], arr[2], arr[3]];
+      if (arr.length) [arr[3], arr[1], arr[2]] = [arr[1], arr[2], arr[3]];
       setDeviceData(arr);
     }
     if (deviceData.length) {
@@ -513,8 +601,8 @@ const DeviceDemo: React.FC<{
   useEffect(() => {
     if (temPropertyHistory?.length) {
       const arr: number[] = [];
-      temPropertyHistory.forEach((temItem: HistoryLogType) => {
-        arr.push(Number(temItem.value));
+      temPropertyHistory?.forEach((temItem: HistoryLogType) => {
+        arr.push(Number(temItem?.value));
       });
       setTemPropertyHistoryData(arr);
     } else {
@@ -525,8 +613,8 @@ const DeviceDemo: React.FC<{
   useEffect(() => {
     if (humPropertyHistory?.length) {
       const arr: number[] = [];
-      humPropertyHistory.forEach((temItem: HistoryLogType) => {
-        arr.push(Number(temItem.value));
+      humPropertyHistory?.forEach((temItem: HistoryLogType) => {
+        arr.push(Number(temItem?.value));
       });
       setHumPropertyHistoryData(arr);
     } else {
@@ -543,15 +631,17 @@ const DeviceDemo: React.FC<{
           renderItem={(item, index) => (
             <div style={{ borderRight: index < 5 ? '1px solid black' : '', paddingLeft: '20px' }}>
               <List.Item>
-                <Statistic
-                  title={
-                    <>
-                      <>{item.icon}</>
-                      <>{item.title}</>
-                    </>
-                  }
-                  value={item.desc}
-                />
+                <Row>
+                  <Col flex={1}>
+                    <div>{item.name}</div>
+                  </Col>
+                  <Col flex={3} />
+                </Row>
+                <Row>
+                  <Col flex={2}>
+                    <div style={{ fontSize: '24px' }}>{getFirstLineDeviceData(item)}</div>
+                  </Col>
+                </Row>
               </List.Item>
             </div>
           )}
