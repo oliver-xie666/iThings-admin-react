@@ -100,8 +100,16 @@ const DeviceDemo: React.FC = () => {
     page: 1,
     size: 99999,
   };
+  const pollingObj = {
+    pollingInterval: 60000,
+    pollingWhenHidden: false,
+    pollingErrorRetryCount: 3,
+  };
+
+  const refreshDeps = [productID, deviceName];
+
   // 通过产品名获取产品ID
-  const { data: productDetail } = useRequest(
+  useRequest(
     async () => {
       const res = await postApiV1ThingsProductInfoIndex({
         page,
@@ -110,6 +118,8 @@ const DeviceDemo: React.FC = () => {
       return res.data.list;
     },
     {
+      ...pollingObj,
+      refreshDeps,
       onSuccess: (data) => {
         setProductOption(
           data?.map((item) => ({
@@ -117,12 +127,10 @@ const DeviceDemo: React.FC = () => {
             value: item.productID as string,
           })),
         );
-        setProductID(data?.[0].productID as string);
+        if (!productID) setProductID(data?.[0].productID as string);
       },
     },
   );
-
-  console.log(productDetail);
 
   // 通过产品ID和设备名获取在线状态
   const { data: deviceDetail } = useRequest(
@@ -135,7 +143,8 @@ const DeviceDemo: React.FC = () => {
     },
     {
       ready: !!productID,
-      refreshDeps: [productID],
+      refreshDeps,
+      ...pollingObj,
       onSuccess: (data) => {
         setDeviceOption(
           data?.map((item) => ({
@@ -143,7 +152,7 @@ const DeviceDemo: React.FC = () => {
             value: item.deviceName as string,
           })),
         );
-        setDeviceName(data?.[0].deviceName as string);
+        if (!deviceName) setDeviceName(data?.[0].deviceName as string);
       },
     },
   );
@@ -161,7 +170,8 @@ const DeviceDemo: React.FC = () => {
     },
     {
       ready: !!productID && !!deviceName,
-      refreshDeps: [deviceName],
+      refreshDeps,
+      ...pollingObj,
     },
   );
 
@@ -176,35 +186,27 @@ const DeviceDemo: React.FC = () => {
     },
     {
       ready: !!productID && !!deviceName,
-      refreshDeps: [deviceName],
+      refreshDeps,
+      ...pollingObj,
     },
   );
 
   const getDeviceMsgPropertyLogIndex = (dataID: string) => {
     const subtractTime = moment().subtract(20, 'seconds').format('x');
     // const curTime = moment().subtract(5, 'seconds').format('x');
-    return postApiV1ThingsDeviceMsgPropertyLogIndex(
-      {
-        productID: productID as string,
-        deviceNames: [deviceName],
-        dataID,
-        timeStart: subtractTime,
-        timeEnd: Date.now().toString(),
-        argFunc: 'last',
-        interval: 1000,
-        order: 1,
-        page,
-      },
-      // {
-      //   productID: '25RKSGsdAZi',
-      //   deviceNames: ['yl_test'],
-      //   dataID: 'tem',
-      //   timeStart: '1678540241000',
-      //   timeEnd: '1678543841000',
-      //   argFunc: 'avg',
-      //   interval: 1000,
-      // },
-    );
+    return postApiV1ThingsDeviceMsgPropertyLogIndex({
+      productID: productID as string,
+      deviceNames: [deviceName],
+      dataID,
+      timeStart: subtractTime,
+      timeEnd: Date.now().toString(),
+      // timeStart: '1678674773000',
+      // timeEnd: '1678674791000',
+      argFunc: 'last',
+      interval: 1000,
+      order: 1,
+      page,
+    });
   };
 
   // 获取单个id tem属性 历史记录
@@ -216,7 +218,11 @@ const DeviceDemo: React.FC = () => {
     },
     {
       ready: !!productID && !!deviceName,
-      refreshDeps: [deviceName],
+      refreshDeps,
+      ...pollingObj,
+      onBefore: () => {
+        setLoading(true);
+      },
       onSuccess: () => {
         setLoading(false);
       },
@@ -230,7 +236,11 @@ const DeviceDemo: React.FC = () => {
     },
     {
       ready: !!productID && !!deviceName,
-      refreshDeps: [deviceName],
+      refreshDeps,
+      ...pollingObj,
+      onBefore: () => {
+        setLoading(true);
+      },
       onSuccess: () => {
         setLoading(false);
       },
@@ -372,6 +382,7 @@ const DeviceDemo: React.FC = () => {
   };
 
   const handleProductChange = (val: string) => {
+    setDeviceName('');
     setProductID(val);
     setLoading(true);
   };
