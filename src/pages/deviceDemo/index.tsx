@@ -288,6 +288,9 @@ const DeviceDemo: React.FC = () => {
         trigger: 'axis',
       },
       legend: {
+        orient: 'vertical',
+        x: 'right', //可设定图例在左、右、居中
+        y: 'top',
         data: ['温度', '湿度'],
       },
       grid: {
@@ -754,14 +757,7 @@ const DeviceDemo: React.FC = () => {
             </Card>
           </Col>
           <Col span={9}>
-            <Card
-              title="实时数据曲线"
-              extra={
-                <Button type="link" onClick={() => handleExportCurrentExcel()}>
-                  导出
-                </Button>
-              }
-            >
+            <Card title="实时数据曲线">
               <Spin spinning={loading}>
                 <div style={{ height: '30vh' }}>
                   <Empty />
