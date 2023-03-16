@@ -20,6 +20,7 @@ import * as echarts from 'echarts/core';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 import ExportJsonExcel from 'js-export-excel';
+import { cloneDeep } from 'lodash';
 import moment from 'moment';
 import React, { useEffect, useMemo, useState } from 'react';
 
@@ -32,7 +33,6 @@ import type {
 
 import type { AttrData } from '../deviceMangers/device/detail/pages/deviceCloudLog/data';
 
-import { cloneDeep } from 'lodash';
 import './index.less';
 
 echarts.use([
@@ -195,10 +195,10 @@ const DeviceDemo: React.FC = () => {
   );
 
   const getDeviceMsgPropertyLogIndex = (dataID: string) => {
-    const cTime = '1678674792000';
-    const fTime = '1678674773000';
-    // const cTime = Date.now().toString();
-    // const fTime = moment().subtract(20, 'seconds').format('x');
+    // const cTime = '1678674792000';
+    // const fTime = '1678674773000';
+    const cTime = Date.now().toString();
+    const fTime = moment().subtract(20, 'seconds').format('x');
     setCurTime(cTime);
     setFirstTime(fTime);
 
@@ -470,58 +470,6 @@ const DeviceDemo: React.FC = () => {
     ],
     [deviceDetail, deviceName, productID, deviceData],
   );
-  // const deviceData = [
-  //   {
-  //     key: 'hum',
-  //     icon: <UserOutlined />,
-  //     title: '湿度',
-  //     desc: `${attrList?.[2]?.value}%RH`,
-  //     color: 'blue',
-  //   },
-  //   {
-  //     key: 'tem',
-  //     icon: <UserOutlined />,
-  //     title: (
-  //       <div className="alarm-status">
-  //         <UserOutlined />
-  //         温度
-  //       </div>
-  //     ),
-  //     desc: `${attrList?.[0]?.value}℃`,
-  //     color: 'green',
-  //   },
-  //   {
-  //     key: 'signal',
-  //     icon: <UserOutlined />,
-  //     title: (
-  //       <div className="alarm-status">
-  //         <UserOutlined />
-  //         信号强度
-  //       </div>
-  //     ),
-  //     desc: attrList?.[3]?.value ? `${attrList?.[3]?.value}dBm ` : '-',
-  //     color: 'blue',
-  //   },
-  //   {
-  //     key: 'power',
-  //     icon: <UserOutlined />,
-  //     title: (
-  //       <div className="alarm-status">
-  //         <UserOutlined />
-  //         电池电量
-  //       </div>
-  //     ),
-  //     desc: (
-  //       <ReactEChartsCore
-  //         echarts={echarts}
-  //         option={getPieOption(Number(attrList?.[1]?.value))}
-  //         lazyUpdate={true}
-  //         style={{ height: '100px' }}
-  //       />
-  //     ),
-  //     color: 'green',
-  //   },
-  // ];
 
   const alarmList = [
     {
@@ -542,25 +490,37 @@ const DeviceDemo: React.FC = () => {
     e.resize();
   };
 
-  const emptyData = new Array(20).fill(0);
-
   // 导出表格配置
   const handleExportCurrentExcel = () => {
     function arrToObj(arr) {
       return arr.reduce((obj, item, index: number) => {
-        if (!item) return (obj[xAxisData[index]] = 0), obj;
-        if (item.dataID === 'tem') return (obj[xAxisData[index]] = `${item.value}℃`), obj;
-        if (item.dataID === 'hum') return (obj[xAxisData[index]] = `${item.value}%RH`), obj;
+        if (item.timestamp === null) return (obj[xAxisData[index]] = 0), obj;
+        if (item.dataID === 'tem')
+          return (obj[xAxisData[index]] = item.value ? `${item.value}℃` : ''), obj;
+        if (item.dataID === 'hum')
+          return (obj[xAxisData[index]] = item.value ? `${item.value}%RH` : ''), obj;
       }, {});
     }
+
+    const temArr = [];
+    const humArr = [];
+    xAxisData.map((tem, index) => {
+      temArr.push({
+        timestamp: [tem],
+        value: temPropertyHistoryData[index],
+        dataID: 'tem',
+      });
+      humArr.push({
+        timestamp: [tem],
+        value: humPropertyHistoryData[index],
+        dataID: 'hum',
+      });
+    });
+
     const columnWidths = new Array(20).fill(5);
 
-    const temSheetData: HistoryLogType[] | number[] = [
-      arrToObj(temPropertyHistory.length ? temPropertyHistory : emptyData),
-    ];
-    const humSheetData: HistoryLogType[] | number[] = [
-      arrToObj(humPropertyHistory.length ? humPropertyHistory : emptyData),
-    ];
+    const temSheetData: HistoryLogType[] | number[] = [arrToObj(temArr)];
+    const humSheetData: HistoryLogType[] | number[] = [arrToObj(humArr)];
 
     const option: Partial<OptionDataType> = {};
     option.fileName = `设备数据报表|${moment().format('YYYY-MM-DD HH:mm:ss')}`;
@@ -663,7 +623,6 @@ const DeviceDemo: React.FC = () => {
         });
       }
     }
-
     return propertyData;
   };
 
@@ -697,16 +656,6 @@ const DeviceDemo: React.FC = () => {
       if (arr.length) [arr[3], arr[1], arr[2]] = [arr[1], arr[2], arr[3]];
       setDeviceData(arr);
     }
-    // if (deviceData.length) {
-    //   const data: string[] = [];
-    //   emptyData.forEach((item, i) => {
-    //     data.push(moment().subtract(i, 'seconds').format('x'));
-    //     // data.push(moment().subtract(i, 'seconds').format('HH:mm:ss'));
-    //   });
-
-    //   setXAxisData(data.reverse());
-    //   setLoading(false);
-    // }
   }, [attrData, deviceData.length, modelList]);
 
   useEffect(() => {
