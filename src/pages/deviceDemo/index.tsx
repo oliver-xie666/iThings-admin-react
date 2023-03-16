@@ -7,7 +7,7 @@ import {
 import { postApiV1ThingsProductSchemaIndex } from '@/services/iThingsapi/wumoxing';
 import { DashboardOutlined, UserOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Badge, Button, Card, Col, List, Row, Space, Spin, Statistic } from 'antd';
+import { Badge, Button, Card, Col, Empty, List, Row, Select, Space, Spin } from 'antd';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import { LineChart, PieChart } from 'echarts/charts';
 import {
@@ -20,6 +20,7 @@ import * as echarts from 'echarts/core';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 import ExportJsonExcel from 'js-export-excel';
+import { cloneDeep } from 'lodash';
 import moment from 'moment';
 import React, { useEffect, useMemo, useState } from 'react';
 
@@ -81,41 +82,81 @@ type HistoryLogType = {
   value: string;
 };
 
-const DeviceDemo: React.FC<{
-  productName: string;
-  deviceName: string;
-}> = ({ productName = '温湿度传感器', deviceName = 'EC800M' }) => {
+type OPtionType = { label: string; value: string };
+
+const DeviceDemo: React.FC = () => {
   const [deviceData, setDeviceData] = useState<deviceDataType[]>([]);
   const [loading, setLoading] = useState(true);
+  const [curTime, setCurTime] = useState('');
+  const [firstTime, setFirstTime] = useState('');
   const [temPropertyHistoryData, setTemPropertyHistoryData] = useState<number[]>([]);
   const [humPropertyHistoryData, setHumPropertyHistoryData] = useState<number[]>([]);
   const [xAxisData, setXAxisData] = useState<string[]>([]);
+
+  const [productOption, setProductOption] = useState<OPtionType[]>();
+  const [deviceOption, setDeviceOption] = useState<OPtionType[]>();
+
+  const [productID, setProductID] = useState('');
+  const [deviceName, setDeviceName] = useState('');
 
   const page = {
     page: 1,
     size: 99999,
   };
+  const pollingObj = {
+    pollingInterval: 60000,
+    pollingWhenHidden: false,
+    pollingErrorRetryCount: 3,
+  };
+
+  const refreshDeps = [productID, deviceName];
+
   // 通过产品名获取产品ID
-  const { data: productDetail } = useRequest(async () => {
-    const res = await postApiV1ThingsProductInfoIndex({
-      page,
-      productName,
-    });
-    return res.data.list?.[0];
-  });
+  useRequest(
+    async () => {
+      const res = await postApiV1ThingsProductInfoIndex({
+        page,
+        // productName,
+      });
+      return res.data.list;
+    },
+    {
+      ...pollingObj,
+      refreshDeps,
+      onSuccess: (data) => {
+        setProductOption(
+          data?.map((item) => ({
+            label: item.productName as string,
+            value: item.productID as string,
+          })),
+        );
+        if (!productID) setProductID(data?.[0].productID as string);
+      },
+    },
+  );
 
   // 通过产品ID和设备名获取在线状态
   const { data: deviceDetail } = useRequest(
     async () => {
       const res = await postApiV1ThingsDeviceInfoIndex({
         page,
-        productID: productDetail?.productID as string,
-        deviceName,
+        productID,
       });
-      return res.data.list?.[0];
+      return res?.data?.list;
     },
     {
-      ready: Boolean(productDetail?.productID),
+      ready: !!productID,
+      refreshDeps,
+      ...pollingObj,
+      onSuccess: (data) => {
+        setDeviceOption(
+          data?.map((item) => ({
+            label: item.deviceName as string,
+            value: item.deviceName as string,
+          })),
+        );
+        if (!deviceName) setDeviceName(data?.[0].deviceName as string);
+      },
     },
   );
 
@@ -124,14 +165,16 @@ const DeviceDemo: React.FC<{
   const { data: attrData } = useRequest(
     async () => {
       const res = await postApiV1ThingsDeviceMsgPropertyLatestIndex({
-        productID: productDetail?.productID as string,
+        productID,
         deviceName,
         dataIDs: [],
       });
       return res.data;
     },
     {
-      ready: Boolean(productDetail?.productID),
+      ready: !!productID && !!deviceName,
+      refreshDeps,
+      ...pollingObj,
     },
   );
 
@@ -139,68 +182,91 @@ const DeviceDemo: React.FC<{
   const { data: modelList } = useRequest(
     async () => {
       const res = await postApiV1ThingsProductSchemaIndex({
-        productID: productDetail?.productID as string,
+        productID,
         type: 1,
       });
       return res.data;
     },
     {
-      ready: Boolean(productDetail?.productID),
+      ready: !!productID && !!deviceName,
+      refreshDeps,
+      ...pollingObj,
     },
   );
 
   const getDeviceMsgPropertyLogIndex = (dataID: string) => {
-    const subtractTime = moment().subtract(20, 'seconds').format('x');
-    // const curTime = moment().subtract(5, 'seconds').format('x');
-    return postApiV1ThingsDeviceMsgPropertyLogIndex(
-      {
-        productID: productDetail?.productID as string,
-        deviceNames: [deviceName],
-        dataID,
-        timeStart: subtractTime,
-        timeEnd: Date.now().toString(),
-        argFunc: 'last',
-        interval: 1000,
-        order: 1,
-        page,
-      },
-      // {
-      //   productID: '25RKSGsdAZi',
-      //   deviceNames: ['yl_test'],
-      //   dataID: 'tem',
-      //   timeStart: '1678540241000',
-      //   timeEnd: '1678543841000',
-      //   argFunc: 'avg',
-      //   interval: 1000,
-      // },
-    );
+    // const cTime = '1678674792000';
+    // const fTime = '1678674773000';
+    const cTime = Date.now().toString();
+    const fTime = moment().subtract(20, 'seconds').format('x');
+    setCurTime(cTime);
+    setFirstTime(fTime);
+
+    return postApiV1ThingsDeviceMsgPropertyLogIndex({
+      productID: productID as string,
+      deviceNames: [deviceName],
+      dataID,
+      timeStart: fTime,
+      timeEnd: cTime,
+      argFunc: 'last',
+      interval: 1000,
+      order: 1,
+      page,
+    });
   };
 
   // 获取单个id tem属性 历史记录
   const { data: temPropertyHistory } = useRequest(
     async () => {
       const res = await getDeviceMsgPropertyLogIndex('tem');
-      return res.data.list;
+
+      return res?.data?.list || [];
     },
     {
-      ready: Boolean(productDetail?.productID),
+      ready: !!productID && !!deviceName,
+      refreshDeps,
+      ...pollingObj,
+      onBefore: () => {
+        setLoading(true);
+      },
+      onSuccess: () => {
+        setLoading(false);
+      },
     },
   );
   // 获取单个id hum属性 历史记录
   const { data: humPropertyHistory } = useRequest(
     async () => {
-      const res = await getDeviceMsgPropertyLogIndex('tem');
-      return res.data.list;
+      const res = await getDeviceMsgPropertyLogIndex('hum');
+      return res?.data?.list || [];
     },
     {
-      ready: Boolean(productDetail?.productID),
+      ready: !!productID && !!deviceName,
+      refreshDeps,
+      ...pollingObj,
+      onBefore: () => {
+        setLoading(true);
+      },
+      onSuccess: () => {
+        setLoading(false);
+      },
     },
   );
 
+  // 在线状态
   const isOnline = (row: deviceDetailType) => {
     if (row?.firstLogin === '0') return '未激活';
     else if (row?.firstLogin !== '0' && row?.isOnline == 1) return '在线';
-    else return '离线';
+    else if (row?.firstLogin !== '0' && row?.isOnline == 2) return '离线';
+    else return '-';
+  };
+
+  //采集方式
+  const modelMode = (row: deviceDataType) => {
+    if (!deviceDetail?.length) return '-';
+    if (row?.value === 'true') return '单次采集';
+    else if (row?.value === 'false') return '周期采集';
+    else return '-';
   };
 
   const getLineOption = (): LineEChartsOption => {
@@ -222,6 +288,9 @@ const DeviceDemo: React.FC<{
         trigger: 'axis',
       },
       legend: {
+        orient: 'vertical',
+        x: 'right', //可设定图例在左、右、居中
+        y: 'top',
         data: ['温度', '湿度'],
       },
       grid: {
@@ -322,100 +391,88 @@ const DeviceDemo: React.FC<{
     return item.value ? deviceValue[item?.dataID as string] : '-';
   };
 
+  const handleProductChange = (val: string) => {
+    setDeviceName('');
+    setProductID(val);
+    setLoading(true);
+  };
+  const handleDeviceChange = (val: string) => {
+    setDeviceName(val);
+    setLoading(true);
+  };
+
+  // 获取第一行的ui及数据
+  const getFirstLineDeviceData = (item: deviceDataType & { key: number }) => {
+    if (item?.key === 1) {
+      return (
+        <Select
+          size="large"
+          style={{ width: '150px' }}
+          value={productID}
+          onChange={handleProductChange}
+          options={productOption}
+        />
+      );
+    } else if (item?.key === 2) {
+      return (
+        <Select
+          size="large"
+          style={{ width: '150px' }}
+          value={deviceName}
+          loading={!deviceName}
+          onChange={handleDeviceChange}
+          options={deviceOption}
+        />
+      );
+    } else return item.value;
+  };
+
   const firstLineData = useMemo(
     () => [
       {
         key: 1,
-        icon: <UserOutlined />,
-        title: '设备名称',
-        desc: deviceName,
+        icon: <DashboardOutlined />,
+        name: '所属产品名称',
+        value: 'select',
       },
       {
         key: 2,
-        icon: <DashboardOutlined />,
-        title: '所属产品名称',
-        desc: productName,
+        icon: <UserOutlined />,
+        name: '设备名称',
+        value: 'select',
       },
       {
         key: 3,
         icon: <UserOutlined />,
-        title: '通道数',
-        desc: '-',
+        name: '通道数',
+        value: '-',
       },
       {
         key: 4,
         icon: <UserOutlined />,
-        title: '采集类型',
-        desc: '温度/湿度',
+        name: '采集类型',
+        value: '温度/湿度',
       },
       {
         key: 5,
         icon: <UserOutlined />,
-        title: '采集方式',
-        desc: deviceData?.[4]?.value === 'true' ? '单次采集' : '周期采集',
+        name: '采集方式',
+        value: modelMode(deviceData?.find((item) => item.dataID === 'model')),
       },
       {
         key: 6,
         icon: <UserOutlined />,
-        title: '状态',
-        desc: isOnline(deviceDetail),
+        name: '状态',
+        value: isOnline(
+          deviceDetail?.find(
+            (item) => item.productID === productID && item.deviceName === deviceName,
+          ),
+        ),
         // desc: 'online',
       },
     ],
-    [deviceDetail, deviceName, productName, deviceData],
+    [deviceDetail, deviceName, productID, deviceData],
   );
-  // const deviceData = [
-  //   {
-  //     key: 'hum',
-  //     icon: <UserOutlined />,
-  //     title: '湿度',
-  //     desc: `${attrList?.[2]?.value}%RH`,
-  //     color: 'blue',
-  //   },
-  //   {
-  //     key: 'tem',
-  //     icon: <UserOutlined />,
-  //     title: (
-  //       <div className="alarm-status">
-  //         <UserOutlined />
-  //         温度
-  //       </div>
-  //     ),
-  //     desc: `${attrList?.[0]?.value}℃`,
-  //     color: 'green',
-  //   },
-  //   {
-  //     key: 'signal',
-  //     icon: <UserOutlined />,
-  //     title: (
-  //       <div className="alarm-status">
-  //         <UserOutlined />
-  //         信号强度
-  //       </div>
-  //     ),
-  //     desc: attrList?.[3]?.value ? `${attrList?.[3]?.value}dBm ` : '-',
-  //     color: 'blue',
-  //   },
-  //   {
-  //     key: 'power',
-  //     icon: <UserOutlined />,
-  //     title: (
-  //       <div className="alarm-status">
-  //         <UserOutlined />
-  //         电池电量
-  //       </div>
-  //     ),
-  //     desc: (
-  //       <ReactEChartsCore
-  //         echarts={echarts}
-  //         option={getPieOption(Number(attrList?.[1]?.value))}
-  //         lazyUpdate={true}
-  //         style={{ height: '100px' }}
-  //       />
-  //     ),
-  //     color: 'green',
-  //   },
-  // ];
 
   const alarmList = [
     {
@@ -436,24 +493,37 @@ const DeviceDemo: React.FC<{
     e.resize();
   };
 
-  const emptyData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
+  // 导出表格配置
   const handleExportCurrentExcel = () => {
     function arrToObj(arr) {
       return arr.reduce((obj, item, index: number) => {
-        if (!item) return (obj[xAxisData[index]] = 0), obj;
-        if (item.dataID === 'tem') return (obj[xAxisData[index]] = `${item.value}℃`), obj;
-        if (item.dataID === 'hum') return (obj[xAxisData[index]] = `${item.value}%RH`), obj;
+        if (item.timestamp === null) return (obj[xAxisData[index]] = 0), obj;
+        if (item.dataID === 'tem')
+          return (obj[xAxisData[index]] = item.value ? `${item.value}℃` : ''), obj;
+        if (item.dataID === 'hum')
+          return (obj[xAxisData[index]] = item.value ? `${item.value}%RH` : ''), obj;
       }, {});
     }
-    const columnWidths = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
 
-    const temSheetData: HistoryLogType[] | number[] = [
-      arrToObj(temPropertyHistory.length ? temPropertyHistory : emptyData),
-    ];
-    const humSheetData: HistoryLogType[] | number[] = [
-      arrToObj(humPropertyHistory.length ? humPropertyHistory : emptyData),
-    ];
+    const temArr = [];
+    const humArr = [];
+    xAxisData.map((tem, index) => {
+      temArr.push({
+        timestamp: [tem],
+        value: temPropertyHistoryData[index],
+        dataID: 'tem',
+      });
+      humArr.push({
+        timestamp: [tem],
+        value: humPropertyHistoryData[index],
+        dataID: 'hum',
+      });
+    });
+
+    const columnWidths = new Array(20).fill(5);
+
+    const temSheetData: HistoryLogType[] | number[] = [arrToObj(temArr)];
+    const humSheetData: HistoryLogType[] | number[] = [arrToObj(humArr)];
 
     const option: Partial<OptionDataType> = {};
     option.fileName = `设备数据报表|${moment().format('YYYY-MM-DD HH:mm:ss')}`;
@@ -477,62 +547,145 @@ const DeviceDemo: React.FC<{
     toExcel.saveExcel(); //保存
   };
 
+  // 线性插值
+  const linearInterpolation = (data, firstTimestamp, currentTimestamp) => {
+    const propertyHistoryData = cloneDeep(data),
+      propertyData = [];
+    propertyHistoryData?.sort((a, b) => Number(a.timestamp) - Number(b.timestamp));
+
+    // 数组开始插值
+    const beforeCount = Math.floor((propertyHistoryData?.[0]?.timestamp - firstTimestamp) / 1000);
+    if (beforeCount >= 1) {
+      const interval = Math.floor(
+        (propertyHistoryData?.[0]?.timestamp - firstTimestamp) / beforeCount,
+      );
+
+      const lastTimestamp = firstTimestamp;
+      for (let i = 0; i < beforeCount; i++) {
+        const intervalTimestamp = Number(lastTimestamp) + interval * i;
+        // 确保数组长度不超过20
+        if (propertyData.length > 20) {
+          propertyData.shift();
+        }
+        propertyData.push({
+          timestamp: intervalTimestamp,
+          dataID: propertyHistoryData?.[0]?.dataID,
+          value: null,
+        });
+      }
+    }
+
+    // 遍历所有数据点,且中间插值
+    for (let i = 0; i < propertyHistoryData?.length; i++) {
+      const item = propertyHistoryData[i];
+      const timestamp = Number(item.timestamp);
+      const value = Number(item.value);
+
+      propertyData.push({ timestamp, dataID: item.dataID, value });
+
+      // 如果不是最后一个数据点,则插值
+      if (i < propertyHistoryData?.length - 1) {
+        const nextItem = propertyHistoryData[i + 1];
+        const nextTimestamp = Number(nextItem.timestamp);
+        const timeDiff = Math.floor((nextTimestamp - timestamp) / 1000);
+        if (timeDiff > 1) {
+          for (let j = 1; j < timeDiff; j++) {
+            // 按照斜率计算插值
+            const intervalTimestamp = timestamp + j * 1000;
+            const temValue = null;
+            propertyData.push({
+              timestamp: intervalTimestamp,
+              dataID: item.dataID,
+              value: temValue,
+            });
+          }
+        }
+      }
+    }
+
+    // 判断最后一个数据点和当前时间之间是否需要插值
+    if (currentTimestamp - propertyData[propertyData.length - 1].timestamp >= 1000) {
+      const count = Math.min(
+        Math.floor((currentTimestamp - propertyData[propertyData.length - 1].timestamp) / 1000),
+        20 - temPropertyHistoryData.length,
+      );
+      const interval = Math.floor(
+        (currentTimestamp - propertyData[propertyData.length - 1].timestamp) / count,
+      );
+      const lastTimestamp = propertyData[propertyData.length - 1].timestamp;
+      for (let i = 1; i <= count; i++) {
+        const intervalTimestamp = lastTimestamp + interval * i;
+        // 确保数组长度不超过20
+        if (propertyData.length > 20) {
+          propertyData.shift();
+        }
+        propertyData.push({
+          timestamp: intervalTimestamp,
+          dataID: propertyData?.[0]?.dataID,
+          value: null,
+        });
+      }
+    }
+    return propertyData;
+  };
+
+  useEffect(() => {
+    if (!deviceDetail?.length) {
+      setLoading(false);
+      setTemPropertyHistoryData(Array(20).fill(null));
+      setHumPropertyHistoryData(Array(20).fill(null));
+    }
+  }, [deviceDetail]);
+
   // 匹配物模型名称
   useEffect(() => {
     if (modelList && attrData) {
       const arr: deviceDataType[] = [];
       modelList?.list?.forEach((item: deviceDataType) => {
-        attrData.list?.some((list: deviceDataType, index: number) => {
-          if (list.dataID === item.identifier) {
+        attrData?.list?.some((list: deviceDataType, index: number) => {
+          if (list?.dataID === item?.identifier) {
             arr.push({
               ...list,
-              name: item.name,
-              affordance: JSON.parse(item.affordance as string).define.type,
-              unit: JSON.parse(item.affordance as string).define.unit,
+              name: item?.name,
+              affordance: JSON.parse(item?.affordance as string)?.define?.type,
+              unit: JSON.parse(item?.affordance as string)?.define?.unit,
               icon: <UserOutlined />,
               color: index % 2 === 0 ? 'blue' : 'green',
             });
           }
-          return list.dataID === item.identifier;
+          return list?.dataID === item?.identifier;
         });
       });
-      [arr[3], arr[1], arr[2]] = [arr[1], arr[2], arr[3]];
+      if (arr.length) [arr[3], arr[1], arr[2]] = [arr[1], arr[2], arr[3]];
       setDeviceData(arr);
-    }
-    if (deviceData.length) {
-      const data: string[] = [];
-      emptyData.forEach((item, i) => {
-        data.push(moment().subtract(i, 'seconds').format('HH:mm:ss'));
-      });
-
-      setXAxisData(data.reverse());
-      setLoading(false);
     }
   }, [attrData, deviceData.length, modelList]);
 
   useEffect(() => {
-    if (temPropertyHistory?.length) {
-      const arr: number[] = [];
-      temPropertyHistory.forEach((temItem: HistoryLogType) => {
-        arr.push(Number(temItem.value));
-      });
-      setTemPropertyHistoryData(arr);
-    } else {
-      setTemPropertyHistoryData(emptyData);
+    const axisData = [];
+    for (let i = 19; i >= 0; i--) {
+      const timeStr = moment(Number(firstTime) + i * 1000).format('HH:mm:ss');
+      axisData.push(timeStr);
     }
-  }, [temPropertyHistory]);
-
-  useEffect(() => {
-    if (humPropertyHistory?.length) {
-      const arr: number[] = [];
-      humPropertyHistory.forEach((temItem: HistoryLogType) => {
-        arr.push(Number(temItem.value));
-      });
-      setHumPropertyHistoryData(arr);
-    } else {
-      setHumPropertyHistoryData(emptyData);
+    setXAxisData(axisData.reverse());
+    if (temPropertyHistory?.length && humPropertyHistory?.length) {
+      if (temPropertyHistory?.length >= 1 && temPropertyHistory?.length < 20) {
+        setTemPropertyHistoryData(
+          linearInterpolation(temPropertyHistory, firstTime, curTime).map((item) => item.value),
+        );
+        setHumPropertyHistoryData(
+          linearInterpolation(humPropertyHistory, firstTime, curTime).map((item) => item.value),
+        );
+      } else {
+        setTemPropertyHistoryData(temPropertyHistory.map((item) => item.value));
+        setHumPropertyHistoryData(humPropertyHistory.map((item) => item.value));
+      }
     }
-  }, [humPropertyHistory]);
+    if (!temPropertyHistory?.length || !humPropertyHistory?.length) {
+      setTemPropertyHistoryData(Array(20).fill(null));
+      setHumPropertyHistoryData(Array(20).fill(null));
+    }
+  }, [deviceData, temPropertyHistory, humPropertyHistory]);
 
   return (
     <div className="demo-wrapper">
@@ -543,15 +696,17 @@ const DeviceDemo: React.FC<{
           renderItem={(item, index) => (
             <div style={{ borderRight: index < 5 ? '1px solid black' : '', paddingLeft: '20px' }}>
               <List.Item>
-                <Statistic
-                  title={
-                    <>
-                      <>{item.icon}</>
-                      <>{item.title}</>
-                    </>
-                  }
-                  value={item.desc}
-                />
+                <Row>
+                  <Col flex={1}>
+                    <div>{item.name}</div>
+                  </Col>
+                  <Col flex={3} />
+                </Row>
+                <Row>
+                  <Col flex={2}>
+                    <div style={{ fontSize: '24px' }}>{getFirstLineDeviceData(item)}</div>
+                  </Col>
+                </Row>
               </List.Item>
             </div>
           )}
@@ -573,7 +728,7 @@ const DeviceDemo: React.FC<{
                   <Col flex={2} />
                   <Col flex={2}>
                     <div style={{ color: item.color, lineHeight: '80px', fontSize: '40px' }}>
-                      {getDeviceValue(item)}
+                      {deviceDetail?.length ? getDeviceValue(item) : <Empty />}
                     </div>
                   </Col>
                 </Row>
@@ -582,7 +737,7 @@ const DeviceDemo: React.FC<{
           />
         </Card>
         <Row>
-          <Col span={16}>
+          <Col span={9}>
             <Card
               title="实时数据曲线"
               extra={
@@ -601,7 +756,16 @@ const DeviceDemo: React.FC<{
               </Spin>
             </Card>
           </Col>
-          <Col span={8}>
+          <Col span={9}>
+            <Card title="实时数据曲线">
+              <Spin spinning={loading}>
+                <div style={{ height: '30vh' }}>
+                  <Empty />
+                </div>
+              </Spin>
+            </Card>
+          </Col>
+          <Col span={6}>
             <Card title="实时告警">
               <div style={{ height: '30vh' }}>
                 {alarmList.map((item) => (
