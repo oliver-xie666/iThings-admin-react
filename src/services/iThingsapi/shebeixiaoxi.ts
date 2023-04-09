@@ -111,6 +111,7 @@ export async function postApiV1ThingsDeviceMsgPropertyLogIndex(
     /** 0:aes(默认,从久到近排序) 1:desc(时间从近到久排序) */
     order?: number;
     page?: { page?: number; size?: number };
+    order: number;
   },
   options?: { [key: string]: any },
 ) {
