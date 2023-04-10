@@ -5,6 +5,7 @@
 import * as caidanguanli from './caidanguanli';
 import * as changjingliandong from './changjingliandong';
 import * as chanpinguanli from './chanpinguanli';
+import * as devicedatademo from './devicedatademo';
 import * as jiaoseguanli from './jiaoseguanli';
 import * as jiekouguanli from './jiekouguanli';
 import * as liu from './liu';
@@ -41,4 +42,5 @@ export default {
   changjingliandong,
   rizhiguanli,
   jiekouguanli,
+  devicedatademo,
 };
