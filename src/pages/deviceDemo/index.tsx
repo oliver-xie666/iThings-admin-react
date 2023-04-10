@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { postApiV1ThingsProductInfoIndex } from '@/services/iThingsapi/chanpinguanli';
 import { postApiV1ThingsDeviceInfoIndex } from '@/services/iThingsapi/shebeiguanli';
 import {
@@ -33,6 +34,7 @@ import type {
 
 import type { AttrData } from '../deviceMangers/device/detail/pages/deviceCloudLog/data';
 
+import { postApiV1Fw2ef } from '@/services/iThingsapi/devicedatademo';
 import './index.less';
 
 echarts.use([
@@ -92,6 +94,8 @@ const DeviceDemo: React.FC = () => {
   const [temPropertyHistoryData, setTemPropertyHistoryData] = useState<number[]>([]);
   const [humPropertyHistoryData, setHumPropertyHistoryData] = useState<number[]>([]);
   const [xAxisData, setXAxisData] = useState<string[]>([]);
+
+  const [staticData, setStaticData] = useState<number[][]>([]);
 
   const [productOption, setProductOption] = useState<OPtionType[]>();
   const [deviceOption, setDeviceOption] = useState<OPtionType[]>();
@@ -253,6 +257,24 @@ const DeviceDemo: React.FC = () => {
     },
   );
 
+  // 时序图
+  useRequest(
+    async () => {
+      const res = await postApiV1Fw2ef();
+      return setStaticData(res?.data?.value);
+    },
+    {
+      ready: !!productID && !!deviceName,
+      refreshDeps,
+      onBefore: () => {
+        setLoading(true);
+      },
+      onSuccess: () => {
+        setLoading(false);
+      },
+    },
+  );
+
   // 在线状态
   const isOnline = (row: deviceDetailType) => {
     if (row?.firstLogin === '0') return '未激活';
@@ -269,29 +291,21 @@ const DeviceDemo: React.FC = () => {
     else return '-';
   };
 
-  const getLineOption = (): LineEChartsOption => {
+  // 静态图
+  const getStaticLineOption = (): LineEChartsOption => {
     return {
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: xAxisData,
+        data: staticData?.[0],
       },
       yAxis: {
         type: 'value',
         axisLine: { show: true },
         axisTick: { show: true },
-        min: 0,
-        max: 100,
-        splitNumber: 10,
       },
       tooltip: {
         trigger: 'axis',
-      },
-      legend: {
-        orient: 'vertical',
-        x: 'right', //可设定图例在左、右、居中
-        y: 'top',
-        data: ['温度', '湿度'],
       },
       grid: {
         left: '2%',
@@ -301,18 +315,58 @@ const DeviceDemo: React.FC = () => {
       },
       series: [
         {
-          name: '温度',
+          name: '信号频域分析',
           type: 'line',
-          data: temPropertyHistoryData,
-        },
-        {
-          name: '湿度',
-          type: 'line',
-          data: humPropertyHistoryData,
+          data: staticData?.[1],
         },
       ],
     };
   };
+
+  // const getLineOption = (): LineEChartsOption => {
+  //   return {
+  //     xAxis: {
+  //       type: 'category',
+  //       boundaryGap: false,
+  //       data: xAxisData,
+  //     },
+  //     yAxis: {
+  //       type: 'value',
+  //       axisLine: { show: true },
+  //       axisTick: { show: true },
+  //       min: 0,
+  //       max: 100,
+  //       splitNumber: 10,
+  //     },
+  //     tooltip: {
+  //       trigger: 'axis',
+  //     },
+  //     legend: {
+  //       orient: 'vertical',
+  //       x: 'right', //可设定图例在左、右、居中
+  //       y: 'top',
+  //       data: ['温度', '湿度'],
+  //     },
+  //     grid: {
+  //       left: '2%',
+  //       right: '4%',
+  //       bottom: '3%',
+  //       containLabel: true,
+  //     },
+  //     series: [
+  //       {
+  //         name: '温度',
+  //         type: 'line',
+  //         data: temPropertyHistoryData,
+  //       },
+  //       {
+  //         name: '湿度',
+  //         type: 'line',
+  //         data: humPropertyHistoryData,
+  //       },
+  //     ],
+  //   };
+  // };
 
   const getPieOption = (power: number): PieEChartsOption => {
     const total = 100;
@@ -493,59 +547,83 @@ const DeviceDemo: React.FC = () => {
     e.resize();
   };
 
-  // 导出表格配置
-  const handleExportCurrentExcel = () => {
+  // 导出信号频域分析图
+  const handleExportStaticExcel = () => {
     function arrToObj(arr) {
-      return arr.reduce((obj, item, index: number) => {
-        if (item.timestamp === null) return (obj[xAxisData[index]] = 0), obj;
-        if (item.dataID === 'tem')
-          return (obj[xAxisData[index]] = item.value ? `${item.value}℃` : ''), obj;
-        if (item.dataID === 'hum')
-          return (obj[xAxisData[index]] = item.value ? `${item.value}%RH` : ''), obj;
+      return arr.reduce((obj, item, index) => {
+        obj[staticData?.[0]?.[index]] = item;
+        return obj;
       }, {});
     }
-
-    const temArr = [];
-    const humArr = [];
-    xAxisData.map((tem, index) => {
-      temArr.push({
-        timestamp: [tem],
-        value: temPropertyHistoryData[index],
-        dataID: 'tem',
-      });
-      humArr.push({
-        timestamp: [tem],
-        value: humPropertyHistoryData[index],
-        dataID: 'hum',
-      });
-    });
-
-    const columnWidths = new Array(20).fill(5);
-
-    const temSheetData: HistoryLogType[] | number[] = [arrToObj(temArr)];
-    const humSheetData: HistoryLogType[] | number[] = [arrToObj(humArr)];
-
+    const staticSheetData = arrToObj(staticData?.[1]);
+    const columnWidths = new Array(50).fill(5);
     const option: Partial<OptionDataType> = {};
-    option.fileName = `设备数据报表|${moment().format('YYYY-MM-DD HH:mm:ss')}`;
+    option.fileName = `信号频域分析图报表|${moment().format('YYYY-MM-DD HH:mm:ss')}`;
     option.datas = [
       {
-        sheetData: temSheetData,
-        sheetName: '温度数据曲线',
-        sheetFilter: xAxisData,
-        sheetHeader: xAxisData,
-        columnWidths,
-      },
-      {
-        sheetData: humSheetData,
-        sheetName: '湿度数据曲线',
-        sheetFilter: xAxisData,
-        sheetHeader: xAxisData,
+        sheetData: [staticSheetData],
+        sheetName: '信号频域分析图曲线',
+        sheetFilter: staticData?.[0].map((item) => item.toString()),
+        sheetHeader: staticData?.[0].map((item) => item.toString()),
         columnWidths,
       },
     ];
     const toExcel = new ExportJsonExcel(option); //new
     toExcel.saveExcel(); //保存
   };
+  // 导出温湿度表格配置
+  // const handleExportCurrentExcel = () => {
+  //   function arrToObj(arr) {
+  //     return arr.reduce((obj, item, index: number) => {
+  //       if (item.timestamp === null) return (obj[xAxisData[index]] = 0), obj;
+  //       if (item.dataID === 'tem')
+  //         return (obj[xAxisData[index]] = item.value ? `${item.value}℃` : ''), obj;
+  //       if (item.dataID === 'hum')
+  //         return (obj[xAxisData[index]] = item.value ? `${item.value}%RH` : ''), obj;
+  //     }, {});
+  //   }
+
+  //   const temArr = [];
+  //   const humArr = [];
+  //   xAxisData.map((tem, index) => {
+  //     temArr.push({
+  //       timestamp: [tem],
+  //       value: temPropertyHistoryData[index],
+  //       dataID: 'tem',
+  //     });
+  //     humArr.push({
+  //       timestamp: [tem],
+  //       value: humPropertyHistoryData[index],
+  //       dataID: 'hum',
+  //     });
+  //   });
+
+  //   const columnWidths = new Array(20).fill(5);
+
+  //   const temSheetData: HistoryLogType[] | number[] = [arrToObj(temArr)];
+  //   const humSheetData: HistoryLogType[] | number[] = [arrToObj(humArr)];
+
+  //   const option: Partial<OptionDataType> = {};
+  //   option.fileName = `设备数据报表|${moment().format('YYYY-MM-DD HH:mm:ss')}`;
+  //   option.datas = [
+  //     {
+  //       sheetData: temSheetData,
+  //       sheetName: '温度数据曲线',
+  //       sheetFilter: xAxisData,
+  //       sheetHeader: xAxisData,
+  //       columnWidths,
+  //     },
+  //     {
+  //       sheetData: humSheetData,
+  //       sheetName: '湿度数据曲线',
+  //       sheetFilter: xAxisData,
+  //       sheetHeader: xAxisData,
+  //       columnWidths,
+  //     },
+  //   ];
+  //   const toExcel = new ExportJsonExcel(option); //new
+  //   toExcel.saveExcel(); //保存
+  // };
 
   // 线性插值
   const linearInterpolation = (data, firstTimestamp, currentTimestamp) => {
@@ -739,9 +817,9 @@ const DeviceDemo: React.FC = () => {
         <Row>
           <Col span={9}>
             <Card
-              title="实时数据曲线"
+              title="信号频域分析"
               extra={
-                <Button type="link" onClick={() => handleExportCurrentExcel()}>
+                <Button type="link" onClick={() => handleExportStaticExcel()}>
                   导出
                 </Button>
               }
@@ -749,7 +827,7 @@ const DeviceDemo: React.FC = () => {
               <Spin spinning={loading}>
                 <ReactEChartsCore
                   echarts={echarts}
-                  option={getLineOption()}
+                  option={getStaticLineOption()}
                   style={{ height: '30vh' }}
                   onEvents={{ rendered: handleLineChart }}
                 />
