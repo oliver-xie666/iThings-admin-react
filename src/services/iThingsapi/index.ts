@@ -4,8 +4,12 @@
 // API 唯一标识：
 import * as caidanguanli from './caidanguanli';
 import * as changjingliandong from './changjingliandong';
+import * as changjingliandongguanlian from './changjingliandongguanlian';
 import * as chanpinguanli from './chanpinguanli';
-import * as devicedatademo from './devicedatademo';
+import * as chulijilu from './chulijilu';
+import * as gaojingguanli from './gaojingguanli';
+import * as gaojingjilu from './gaojingjilu';
+import * as gaojingrizhi from './gaojingrizhi';
 import * as jiaoseguanli from './jiaoseguanli';
 import * as jiekouguanli from './jiekouguanli';
 import * as liu from './liu';
@@ -22,6 +26,7 @@ import * as wumoxing from './wumoxing';
 import * as xitongpeizhi from './xitongpeizhi';
 import * as yonghuguanli from './yonghuguanli';
 import * as yuanchengpeizhi from './yuanchengpeizhi';
+import * as zidingyi from './zidingyi';
 export default {
   chanpinguanli,
   wumoxing,
@@ -42,5 +47,10 @@ export default {
   changjingliandong,
   rizhiguanli,
   jiekouguanli,
-  devicedatademo,
+  chulijilu,
+  gaojingguanli,
+  changjingliandongguanlian,
+  gaojingrizhi,
+  gaojingjilu,
+  zidingyi,
 };

@@ -90,7 +90,7 @@ export const AUTH_MODE_FORM = [
 export const AUTO_REGISTER_FORM = [
   { label: '关闭', value: 1 },
   { label: '打开', value: 2 },
-  { label: '打开并自动创建设备', value: 2 },
+  { label: '打开并自动创建设备', value: 3 },
 ];
 
 export const AUTO_REGISTER_VALUE = {
@@ -182,4 +182,6 @@ export const MONACO_OPTIONS: editor.IStandaloneEditorConstructionOptions = {
   folding: true, // 是否启用代码折叠
   renderLineHighlight: 'all', // 当前行突出显示方式
   readOnly: false,
+  scrollBeyondLastLine: false,
+  scrollBeyondLastColumn: 0,
 };
